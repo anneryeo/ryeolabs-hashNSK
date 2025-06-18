@@ -22,7 +22,7 @@ export const Subscribe = () => {
 						sideOffset={5}
 					>
 						<h3 className="mb-2 text-base font-semibold text-center text-primary-600">
-							Subscribe to my newsletter for updates on Ryeo's journey!
+							Stay in the loop—new discoveries and insights, straight to your inbox! 🚀
 						</h3>
 						<SubscribeForm />
 					</Popover.Content>
