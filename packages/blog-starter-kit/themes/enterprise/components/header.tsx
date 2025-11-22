@@ -77,7 +77,7 @@ export const Header = () => {
 	);
 
 	return (
-		<header className="border-b bg-[#C20005] py-10 dark:border-neutral-800 dark:bg-neutral-900">
+		<header className="border-b bg-[#C20005] py-5 dark:border-neutral-800 dark:bg-neutral-900">
 			<Container className="grid grid-cols-4 gap-5 px-5">
 				<div className="col-span-2 flex flex-1 flex-row items-center gap-2 lg:col-span-1">
 					<div className="lg:hidden">
@@ -101,7 +101,7 @@ export const Header = () => {
 					<nav className="hidden lg:block">{navList}</nav>
 				</div>
 			</Container>
-			<div className="mt-5 flex justify-center lg:hidden">
+			<div className="mt-3 flex justify-center lg:hidden">
 				<PublicationLogo />
 			</div>
 		</header>
