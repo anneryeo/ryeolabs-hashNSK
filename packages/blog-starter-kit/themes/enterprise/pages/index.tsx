@@ -420,12 +420,12 @@ export default function LandingPage() {
 										>
 											Want to Invent with Me?
 										</h3>
-										<p 
-											className="text-gray-600 text-lg"
-											style={{ fontFamily: "'Alexandria', sans-serif" }}
-										>
-											Let's build something amazing together
-										</p>
+									<p 
+										className="text-gray-600 text-lg"
+										style={{ fontFamily: "'Alexandria', sans-serif" }}
+									>
+										Let&apos;s build something amazing together
+									</p>
 									</div>
 									
 									<div className="w-32 h-32 rounded-xl bg-gradient-to-br from-[#8B0004] to-[#C20005] flex-shrink-0 ml-6">
