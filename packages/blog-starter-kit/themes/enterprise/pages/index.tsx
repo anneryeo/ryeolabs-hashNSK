@@ -411,7 +411,7 @@ export default function LandingPage() {
 										className="text-[#FFFDF3] font-bold text-xl transform -rotate-90 whitespace-nowrap"
 										style={{ fontFamily: "'Swis721 Ex BT', sans-serif" }}
 									>
-										COLLABORATE
+										HEY!
 									</span>
 								</div>
 								
