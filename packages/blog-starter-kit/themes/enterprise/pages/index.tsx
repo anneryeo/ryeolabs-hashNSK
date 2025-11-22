@@ -167,7 +167,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								<h1
 									className="text-6xl font-bold tracking-wider md:text-8xl"
 									style={{
-										fontFamily: "'Swis721 Ex BT', sans-serif",
+										fontFamily: "'Alexandria', sans-serif",
 										lineHeight: '0.885'
 									}}
 								>
@@ -225,7 +225,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 										className="mb-8 text-5xl font-bold md:text-6xl"
 										style={{
 											color: '#C20005',
-											fontFamily: "'Swis721 Ex BT', sans-serif",
+											fontFamily: "'Alexandria', sans-serif",
 											lineHeight: '0.885'
 										}}
 									>
@@ -276,7 +276,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 												className="object-cover"
 											/>
 										) : (
-											<div className="w-full h-full flex items-center justify-center text-[#FFFDF3] text-4xl font-bold" style={{ fontFamily: "'Swis721 Ex BT', sans-serif" }}>
+											<div className="w-full h-full flex items-center justify-center text-[#FFFDF3] text-4xl font-bold" style={{ fontFamily: "'Alexandria', sans-serif" }}>
 												{publication.displayTitle || publication.title || 'RYEO'}
 											</div>
 										)}
@@ -306,7 +306,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								className="mb-4 text-4xl font-bold md:text-5xl"
 								style={{
 									color: '#C20005',
-									fontFamily: "'Swis721 Ex BT', sans-serif",
+									fontFamily: "'Alexandria', sans-serif",
 									lineHeight: '0.885'
 								}}
 							>
