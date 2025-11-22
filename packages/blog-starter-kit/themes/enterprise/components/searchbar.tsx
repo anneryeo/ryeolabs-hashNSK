@@ -69,7 +69,7 @@ export const Search = () => {
 
 	useEffect(() => {
 		search(query);
-	}, [query]);
+	}, [query, search]);
 
 	const searchResultsList = searchResults.map((post) => {
 		const postURL = `/${post.slug}`;

@@ -135,7 +135,7 @@ export const Analytics = () => {
 		_sendPageViewsToHashnodeGoogleAnalytics();
 		_sendViewsToHashnodeInternalAnalytics();
 		_sendViewsToAdvancedAnalyticsDashboard();
-	}, []);
+	}, [_sendViewsToHashnodeInternalAnalytics, _sendViewsToAdvancedAnalyticsDashboard]);
 
 	return null;
 };
