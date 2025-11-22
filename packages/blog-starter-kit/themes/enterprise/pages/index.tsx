@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ChevronDownSVG } from '../components/icons';
@@ -144,13 +145,15 @@ export default function LandingPage() {
 							<div className="relative">
 								{/* Placeholder for your image */}
 								<div 
-									className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-[#C20005] to-[#8B0004] shadow-2xl"
+									className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-[#C20005] to-[#8B0004] shadow-2xl relative"
+									style={{ minHeight: '400px' }}
 								>
 									{/* Replace this with your actual image */}
-									<img 
+									<Image 
 										src="/about-image.jpg" 
 										alt="RYEO LABS" 
-										className="w-full h-full object-cover"
+										fill
+										className="object-cover"
 										onError={(e) => {
 											// Fallback to gradient if image not found
 											e.currentTarget.style.display = 'none';
@@ -249,12 +252,13 @@ export default function LandingPage() {
 									</div>
 									
 									{/* Image placeholder */}
-									<div className="w-32 h-32 rounded-xl bg-gradient-to-br from-[#C20005] to-[#8B0004] flex-shrink-0 ml-6">
+									<div className="w-32 h-32 rounded-xl bg-gradient-to-br from-[#C20005] to-[#8B0004] flex-shrink-0 ml-6 relative">
 										{/* Replace with your image */}
-										<img 
+										<Image 
 											src="/projects-thumb.jpg" 
 											alt="Projects"
-											className="w-full h-full object-cover rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+											fill
+											className="object-cover rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
 											onError={(e) => { e.currentTarget.style.display = 'none'; }}
 										/>
 									</div>
@@ -310,11 +314,12 @@ export default function LandingPage() {
 										</p>
 									</div>
 									
-									<div className="w-32 h-32 rounded-xl bg-gradient-to-br from-[#8B0004] to-[#C20005] flex-shrink-0 ml-6">
-										<img 
+									<div className="w-32 h-32 rounded-xl bg-gradient-to-br from-[#8B0004] to-[#C20005] flex-shrink-0 ml-6 relative">
+										<Image 
 											src="/blogs-thumb.jpg" 
 											alt="Blogs"
-											className="w-full h-full object-cover rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+											fill
+											className="object-cover rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
 											onError={(e) => { e.currentTarget.style.display = 'none'; }}
 										/>
 									</div>
@@ -369,11 +374,12 @@ export default function LandingPage() {
 										</p>
 									</div>
 									
-									<div className="w-32 h-32 rounded-xl bg-gradient-to-br from-[#C20005] to-[#8B0004] flex-shrink-0 ml-6">
-										<img 
+									<div className="w-32 h-32 rounded-xl bg-gradient-to-br from-[#C20005] to-[#8B0004] flex-shrink-0 ml-6 relative">
+										<Image 
 											src="/timeline-thumb.jpg" 
 											alt="Timeline"
-											className="w-full h-full object-cover rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+											fill
+											className="object-cover rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
 											onError={(e) => { e.currentTarget.style.display = 'none'; }}
 										/>
 									</div>
@@ -424,15 +430,16 @@ export default function LandingPage() {
 										className="text-gray-600 text-lg"
 										style={{ fontFamily: "'Alexandria', sans-serif" }}
 									>
-										Let&apos;s build something amazing together
-									</p>
+											Let&apos;s build something amazing together
+										</p>
 									</div>
 									
-									<div className="w-32 h-32 rounded-xl bg-gradient-to-br from-[#8B0004] to-[#C20005] flex-shrink-0 ml-6">
-										<img 
+									<div className="w-32 h-32 rounded-xl bg-gradient-to-br from-[#8B0004] to-[#C20005] flex-shrink-0 ml-6 relative">
+										<Image 
 											src="/collaborate-thumb.jpg" 
 											alt="Collaborate"
-											className="w-full h-full object-cover rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+											fill
+											className="object-cover rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
 											onError={(e) => { e.currentTarget.style.display = 'none'; }}
 										/>
 									</div>

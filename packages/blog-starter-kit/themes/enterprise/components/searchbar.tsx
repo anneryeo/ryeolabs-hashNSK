@@ -1,7 +1,7 @@
 import { resizeImage } from '@starter-kit/utils/image';
 import request from 'graphql-request';
 import Link from 'next/link';
-import { KeyboardEventHandler, useEffect, useRef, useState } from 'react';
+import { KeyboardEventHandler, useEffect, useRef, useState, useCallback } from 'react';
 import {
 	SearchPostsOfPublicationDocument,
 	SearchPostsOfPublicationQuery,
@@ -42,7 +42,7 @@ export const Search = () => {
 		setQuery(searchInputRef.current?.value || '');
 	};
 
-	const search = async (query: string) => {
+	const search = useCallback(async (query: string) => {
 		if (timerRef.current) clearTimeout(timerRef.current);
 
 		if (!query) {
@@ -65,7 +65,7 @@ export const Search = () => {
 			setSearchResults(posts);
 			setIsSearching(false);
 		}, 500);
-	};
+	}, [publication.id]);
 
 	useEffect(() => {
 		search(query);
