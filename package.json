@@ -1,10 +1,10 @@
 {
-	"name": "hashnode-starter-kit",
+	"name": "ryeolabs-website",
 	"version": "1.0.0",
-	"description": "An OSS Starter Kit to roll out frontends using Hashnode Public APIs",
-	"keywords": [],
+	"description": "RYEO LABS - Custom Next.js website with Hashnode CMS integration",
+	"keywords": ["ryeo-labs", "nextjs", "typescript", "blog"],
 	"license": "MIT",
-	"author": "",
+	"author": "RYEO LABS",
 	"scripts": {
 		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,json}\"",
 		"preinstall": "npx only-allow pnpm"

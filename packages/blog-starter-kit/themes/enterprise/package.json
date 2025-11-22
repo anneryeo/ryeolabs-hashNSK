@@ -1,5 +1,5 @@
 {
-	"name": "@starter-kit/blog-enterprise",
+	"name": "@ryeolabs/website",
 	"private": true,
 	"scripts": {
 		"build": "next build",

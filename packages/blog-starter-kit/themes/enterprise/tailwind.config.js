@@ -13,6 +13,12 @@ module.exports = {
 				success: '#0070f3',
 				cyan: '#79FFE1',
 				primary: colors.blue,
+				'ryeo-red': '#C20005',
+				'ryeo-cream': '#FFFDF3',
+			},
+			fontFamily: {
+				'swis': ['Swis721 Ex BT', 'sans-serif'],
+				'alexandria': ['Alexandria', 'sans-serif'],
 			},
 			typography: () => ({
 				DEFAULT: {

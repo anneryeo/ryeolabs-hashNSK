@@ -15,6 +15,12 @@ const getBasePath = () => {
 };
 
 const getRedirectionRules = async () => {
+	// Skip redirection rules fetch in development if host is not set
+	if (!host || !GQL_ENDPOINT) {
+		console.warn('Skipping redirection rules fetch - env vars not set');
+		return [];
+	}
+
 	const query = gql`
 		query GetRedirectionRules {
 			publication(host: "${host}") {
@@ -28,13 +34,15 @@ const getRedirectionRules = async () => {
 		}
   	`;
 
-	const data = await request(GQL_ENDPOINT, query);
+	try {
+		const data = await request(GQL_ENDPOINT, query);
 
-	if (!data.publication) {
-		throw 'Please ensure you have set the env var NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST correctly.';
-	}
+		if (!data.publication) {
+			console.warn('Publication not found for host:', host);
+			return [];
+		}
 
-	const redirectionRules = data.publication.redirectionRules;
+		const redirectionRules = data.publication.redirectionRules;
 
 	// convert to next.js redirects format
 	const redirects = redirectionRules
@@ -53,6 +61,10 @@ const getRedirectionRules = async () => {
 		});
 
 	return redirects;
+	} catch (error) {
+		console.warn('Error fetching redirection rules:', error);
+		return [];
+	}
 };
 
 /**
