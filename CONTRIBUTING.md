@@ -1,3 +1,60 @@
+```markdown
+# Contributing to RYEO LABS Blog Frontend
+
+Thanks for your interest in contributing! This repository is maintained by RYEO LABS and is a fork of the original Hashnode "starter-kit". We welcome contributions that improve the RYEO LABS frontend, fixes bugs, or add useful integrations.
+
+Although this project consumes Hashnode-hosted content (via Hashnode's GraphQL APIs), contributions here target the frontend code, themes, and developer experience provided by RYEO LABS.
+
+## What we welcome
+
+- **Bug fixes**: Stability, accessibility, and correctness fixes.
+- **Features**: New frontend features or theme capabilities that make the RYEO LABS frontend more useful.
+- **Integrations**: Helpful integrations for deployment, analytics, or CI
+- **Docs**: Improvements to README, CONTRIBUTING, and other documentation.
+
+We generally avoid accepting PRs that are purely subjective cosmetic tweaks unless they solve an issue or improve the overall theme in a broadly useful way.
+
+## How to get started
+
+1. Fork this repository and clone your fork locally.
+2. Create a feature branch: `git checkout -b feat-your-change`.
+3. Make changes and run the project locally under the `packages/blog-starter-kit` theme you are targeting.
+4. Commit, push, and open a pull request against this repository.
+
+Example workflow:
+
+```bash
+git clone git@github.com:<your-user>/ryeolabs-hashNSK.git
+cd ryeolabs-hashNSK
+pnpm install
+pnpm dev --filter packages/blog-starter-kit/themes/enterprise
+```
+
+## Branch and commit conventions
+
+- Branches: `type-short-description` (e.g. `feat-add-profile`, `fix-avatar-loading`)
+- Commit messages: brief summary in present tense with a descriptive body when needed.
+
+## Submitting PRs
+
+- Ensure your branch is up to date with `main` before creating a PR.
+- Provide screenshots or short descriptions for UI changes.
+- Add tests where applicable and make sure `pnpm install` and `pnpm dev` run for the targeted theme.
+
+## Upstream Hashnode references
+
+This project integrates with Hashnode's headless features and APIs. For questions about Hashnode's platform, APIs, quotas, or headless settings, please refer to Hashnode's documentation and support resources:
+
+- Hashnode API Docs: https://apidocs.hashnode.com
+- Hashnode Headless docs: https://hashnode.com/headless
+
+## Code of Conduct
+
+By participating in this project, you agree to follow the repository's `CODE_OF_CONDUCT.md`.
+
+Thank you for contributing to RYEO LABS' frontend. We appreciate your time and help in making this project better for everyone.
+
+```
 # Contributing
 
 We would ❤️ you to contribute to Headless Hashnode Starter kit and help make it better! We want contributing to Hashnode to be fun, enjoyable, and educational for anyone and everyone. All contributions are welcome, including issues, integrations, updates and tweaks.
