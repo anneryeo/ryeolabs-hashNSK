@@ -185,13 +185,14 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 						<div className="mb-12 flex justify-center">
 							<div className="text-[#FFFDF3]">
 								<h1
-									className="text-6xl font-bold tracking-wider md:text-8xl"
+									className="text-6xl font-bold md:text-8xl uppercase"
 									style={{
-										fontFamily: "'Alexandria', sans-serif",
-										lineHeight: '0.885'
+										fontFamily: "'Swis721 Ex BT', sans-serif",
+										lineHeight: '0.885',
+										letterSpacing: '-0.06em'
 									}}
 								>
-									{publication.displayTitle || publication.title || 'RYEO LABS'}
+									{(publication.displayTitle || publication.title || 'RYEO LABS').toUpperCase()}
 								</h1>
 							</div>
 						</div>
