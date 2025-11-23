@@ -7,10 +7,10 @@ export const Footer = () => {
 	const { publication } = useAppContext();
 	const PUBLICATION_LOGO = publication.preferences.logo;
 	return (
-		<footer className="border-t py-20 dark:border-neutral-800 ">
+		<footer className="border-t py-10 dark:border-neutral-800 ">
 			<Container className="px-5">
 				{PUBLICATION_LOGO ? (
-					<div className="mb-20 flex w-full flex-row justify-center">
+					<div className="mb-2 flex w-full flex-row justify-center">
 						<Link
 							href={'/'}
 							aria-label={`${publication.title} home page`}
@@ -29,7 +29,7 @@ export const Footer = () => {
 						<SocialLinks />
 						<p>&copy; 2025 Ryeo Labs </p>
 						<p className="max-w-xl text-center text-sm text-slate-500 dark:text-neutral-400">
-							About Ryeo Labs: Ryeo, by itself, is a symbol of progress and innovation. It was nothing, and now it can be anything. And now, it’s a space for new things, for ideas to come alive.
+							Ryeo Labs draws inspiration from the word Ryeo, which originally came from 'Rey' (Reyes) whose meaning shifts across cultures: in Korean (려 / 려) it evokes Beauty, in Chinese (麗 / 璀燦) it signifies Splendour, and in Pakistani (ریو / اژدہا) tradition it carries the spirit of the Dragon. Together, these roots embody elegance, brilliance, and power—values at the heart of our innovation.
 						</p>
 					</div>
 				</div>
