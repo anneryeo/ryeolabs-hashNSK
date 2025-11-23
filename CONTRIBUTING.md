@@ -1,4 +1,3 @@
-```markdown
 # Contributing to RYEO LABS Blog Frontend
 
 Thanks for your interest in contributing! This repository is maintained by RYEO LABS and is a fork of the original Hashnode "starter-kit". We welcome contributions that improve the RYEO LABS frontend, fixes bugs, or add useful integrations.
