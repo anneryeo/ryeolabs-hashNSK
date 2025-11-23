@@ -104,6 +104,10 @@ const Post = ({ publication, post }: PostProps) => {
 					property="twitter:description"
 					content={post.seo?.description || post.subtitle || post.brief}
 				/>
+				{/* Open Graph tags for social previews */}
+				<meta property="og:description" content={post.seo?.description || post.subtitle || post.brief} />
+				<meta property="og:title" content={post.seo?.title || post.title} />
+				<meta property="og:url" content={post.url} />
 				<meta
 					property="og:image"
 					content={

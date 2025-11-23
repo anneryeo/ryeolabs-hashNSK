@@ -114,6 +114,16 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 							publication.descriptionSEO || publication.about?.text || 'Innovation • Research • Insights'
 						}
 					/>
+					{/* Open Graph tags for social previews */}
+					<meta
+						property="og:description"
+						content={
+							publication.descriptionSEO || publication.about?.text || 'Innovation • Research • Insights'
+						}
+					/>
+					<meta property="og:title" content={publication.displayTitle || publication.title || 'RYEO LABS'} />
+					<meta property="og:type" content="website" />
+					<meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL || '/'} />
 					<meta property="twitter:card" content="summary_large_image" />
 					<meta
 						property="twitter:title"
