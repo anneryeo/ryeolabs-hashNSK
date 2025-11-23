@@ -262,7 +262,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
 												style={{ fontFamily: "'Montserrat', sans-serif" }}
 											>
-												RYEO LABS is is the personal‑professional hub founded by Anne Reyes, a BS Data Science undergrad at Mapua University; built as an evolving archive of ideas, systems, and stories. It is the beginning to a future of an invention-innovation lab, research collective, and creative studio.
+												RYEO LABS is the personal‑professional hub founded by Anne Reyes, a BS Data Science undergrad at Mapua University; built as an evolving archive of ideas, systems, and stories. It is the beginning to a future of an invention-innovation lab, research collective, and creative studio.
 											</p>
 										)}
 
@@ -271,7 +271,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
 												style={{ fontFamily: "'Montserrat', sans-serif" }}
 											>
-												People in RYEO Labs live and thrive in curiosity, and invention. We explore the intersection of technology, design, and human experience to build meaningful solutions to change the world for the better.
+												People in RYEO LABS live and thrive in curiosity, and invention. We explore the intersection of technology, design, and human experience to build meaningful solutions to change the world for the better.
 											</p>
 										)}
 									</div>
