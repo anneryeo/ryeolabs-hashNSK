@@ -366,7 +366,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 					className="min-h-screen py-20"
 					style={{ backgroundColor: '#FFFDF3' }}
 				>
-					<Container className="flex flex-col items-stretch gap-10 px-5 pb-10">
+					<div className="w-full flex flex-col items-stretch gap-10 px-4 md:px-6 lg:px-8 xl:px-12 pb-10">
 						<div className="mb-12 text-center">
 							<h2
 								className="mb-4 text-4xl font-bold md:text-8xl"
@@ -440,12 +440,12 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								)}
 							</>
 						)}
-					</Container>
+					</div>
 				</section>
 
 				{/* Newsletter Subscription */}
 				{allPosts.length > 0 && (
-					<section className="py-20" style={{ backgroundColor: '#FFFDF3' }}>
+					<section className="py-5" style={{ backgroundColor: '#FFFDF3' }}>
 						<Container className="px-5">
 							<div className="bg-primary-50 grid grid-cols-4 rounded-lg px-5 py-5 dark:bg-neutral-900 md:py-10">
 								<div className="col-span-full md:col-span-2 md:col-start-2">
