@@ -206,7 +206,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								lineHeight: '0.885'
 							}}
 						>
-							{publication.descriptionSEO || publication.about?.text || 'Innovation • Research • Insights'}
+							From Vision to Evolution.
 						</p>
 
 						{/* CTA Buttons */}
@@ -245,14 +245,15 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								{/* Left Column - Text Content */}
 								<div>
 									<h2
-										className="mb-8 text-5xl font-bold md:text-6xl"
+										className="mb-7 text-7xl font-bold md:text-8xl"
 										style={{
 											color: '#C20005',
-											fontFamily: "'Alexandria', sans-serif",
-											lineHeight: '0.885'
+											fontFamily: "'Swis721 Ex BT', sans-serif",
+											lineHeight: '0.885',
+											letterSpacing: '-0.06em',
 										}}
 									>
-										What is {publication.displayTitle || publication.title || 'RYEO LABS'}?
+										What is RYEO LABS?
 									</h2>
 
 									<div className="space-y-6">
@@ -261,16 +262,8 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
 												style={{ fontFamily: "'Montserrat', sans-serif" }}
 											>
-												{publication.about.text}
+												RYEO LABS is is the personal‑professional hub founded by Anne Reyes, built as an evolving archive of ideas, systems, and stories. It is the beginning to a future of an invention-innovation lab, research collective, and creative studio.
 											</p>
-										)}
-
-										{publication.about?.html && (
-											<div
-												className="text-lg text-gray-600 leading-relaxed md:text-xl prose prose-lg max-w-none"
-												style={{ fontFamily: "'Montserrat', sans-serif" }}
-												dangerouslySetInnerHTML={{ __html: publication.about.html }}
-											/>
 										)}
 
 										{!publication.about?.text && !publication.about?.html && (
@@ -278,7 +271,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
 												style={{ fontFamily: "'Montserrat', sans-serif" }}
 											>
-												RYEO LABS is a creative space where innovation meets curiosity. We explore the intersection of technology, design, and human experience to build meaningful solutions.
+												People in RYEO Labs live and thrive in curiosity, and invention. We explore the intersection of technology, design, and human experience to build meaningful solutions to change the world for the better.
 											</p>
 										)}
 									</div>
@@ -290,7 +283,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 									<div className="shadow-2xl relative w-full">
 										{publication.preferences.logo ? (
 											<Image
-												src="/assets/images/494856406_714513674388206_7931036402097836965_n.jpg"
+												src="/assets/images/20250904_071107331_iOS.jpg"
 												alt="Anne Reyes"
 												width={900}
 												height={1200}
@@ -325,10 +318,10 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 					<Container className="flex flex-col items-stretch gap-10 px-5 pb-10">
 						<div className="mb-12 text-center">
 							<h2
-								className="mb-4 text-4xl font-bold md:text-5xl"
+								className="mb-4 text-4xl font-bold md:text-8xl"
 								style={{
 									color: '#C20005',
-									fontFamily: "'Alexandria', sans-serif",
+									fontFamily: "'Swis721 Ex BT', sans-serif",
 									lineHeight: '0.885'
 								}}
 							>
@@ -341,7 +334,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 									lineHeight: '0.885'
 								}}
 							>
-								Discover our latest insights and stories
+								Discover our latest projects, insights, and stories.
 							</p>
 						</div>
 
