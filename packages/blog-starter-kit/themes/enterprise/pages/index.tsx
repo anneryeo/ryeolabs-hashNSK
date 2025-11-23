@@ -159,7 +159,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 						className="absolute inset-0 h-full w-full object-cover"
 						style={{ zIndex: 0 }}
 					>
-						<source src="/assets/videos/CC1_Iron-Man.mp4" type="video/mp4" />
+						<source src="/assets/videos/CC1_Iron-Man_3.mp4" type="video/mp4" />
 					</video>
 
 					{/* Dark overlay for text readability */}
@@ -262,7 +262,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
 												style={{ fontFamily: "'Montserrat', sans-serif" }}
 											>
-												RYEO LABS is is the personal‑professional hub founded by Anne Reyes, built as an evolving archive of ideas, systems, and stories. It is the beginning to a future of an invention-innovation lab, research collective, and creative studio.
+												RYEO LABS is is the personal‑professional hub founded by Anne Reyes, a BS Data Science undergrad at Mapua University; built as an evolving archive of ideas, systems, and stories. It is the beginning to a future of an invention-innovation lab, research collective, and creative studio.
 											</p>
 										)}
 
@@ -309,6 +309,57 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 					</div>
 				</section>
 
+				{/* Inspiration Board Section */}
+				<section id="inspiration" className="py-20" style={{ backgroundColor: '#C20005' }}>
+					<div className="container mx-auto px-6">
+						<div className="max-w-7xl mx-auto text-white">
+							<div className="text-center mb-8">
+							<h2
+								className="mb-4 text-4xl font-bold md:text-8xl"
+								style={{
+									color: '#FFFDF3',
+									fontFamily: "'Swis721 Ex BT', sans-serif",
+									lineHeight: '1',
+									letterSpacing: '-0.07em'
+								}}
+							>
+								We all need a little bit of inspiration.
+							</h2>
+								<p className="text-lg max-w-2xl mx-auto">Be reminded.</p>
+							</div>
+							<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+								{[
+									{
+										src: '/assets/images/101ca57a3b78fe1b6473111cface42f6.jpg',
+										quote: 'If you are tired, then do it tired.',
+										author: '000',
+									},
+									{
+										src: '/assets/images/287ee78811e9fc82ef5145e7302ad1e5.jpg',
+										quote: 'Never forget the promise you made to yourself that night.',
+										author: '000',
+									},
+									{
+										src: '/assets/images/586c1570ab7e8cb3cc6c081528433d15.jpg',
+										quote: 'The body achieves what the mind believes.',
+										author: '000',
+									},
+								].map((item, idx) => (
+									<figure key={idx} className="bg-white/5 rounded-lg overflow-hidden">
+										<div className="relative w-full" style={{ paddingTop: '126.67%' }}>
+											<Image src={item.src} alt={item.author || 'inspiration'} fill className="object-cover" />
+										</div>
+										<figcaption className="p-4 text-white">
+											<p className="text-base italic">“{item.quote}”</p>
+											<p className="mt-2 text-sm opacity-80">— {item.author}</p>
+										</figcaption>
+									</figure>
+								))}
+							</div>
+						</div>
+					</div>
+				</section>
+
 				{/* Blog Posts Section */}
 				<section
 					id="blog-posts"
@@ -322,7 +373,8 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								style={{
 									color: '#C20005',
 									fontFamily: "'Swis721 Ex BT', sans-serif",
-									lineHeight: '0.885'
+									lineHeight: '0.885',
+									letterSpacing: '-0.06em'
 								}}
 							>
 								Explore
