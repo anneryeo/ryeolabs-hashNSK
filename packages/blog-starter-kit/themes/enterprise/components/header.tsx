@@ -2,7 +2,6 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { useState } from 'react';
 import { PublicationNavbarItem } from '../generated/graphql';
 import { Button } from './button';
-import { Container } from './container';
 import { useAppContext } from './contexts/appContext';
 import HamburgerSVG from './icons/svgs/HamburgerSVG';
 import { PublicationLogo } from './publication-logo';
@@ -77,30 +76,32 @@ export const Header = () => {
 	);
 
 	return (
-		<header className="border-b bg-[#C20005] py-5 dark:border-neutral-800 dark:bg-neutral-900">
-			<Container className="grid grid-cols-4 gap-5 px-5">
-				<div className="col-span-2 flex flex-1 flex-row items-center gap-2 lg:col-span-1">
-					<div className="lg:hidden">
-						<Button
-							type="outline"
-							label=""
-							icon={<HamburgerSVG className="h-5 w-5 stroke-current" />}
-							className="rounded-xl border-transparent !px-3 !py-2 text-white hover:bg-slate-900 dark:hover:bg-neutral-800"
-							onClick={toggleSidebar}
-						/>
+		<header className="border-b bg-[#C20005] py-1 dark:border-neutral-800 dark:bg-neutral-900">
+			<div className="w-full px-5">
+				<div className="flex w-full flex-row items-center justify-between gap-5">
+					<div className="flex flex-row items-center gap-2">
+						<div className="lg:hidden">
+							<Button
+								type="outline"
+								label=""
+								icon={<HamburgerSVG className="h-5 w-5 stroke-current" />}
+								className="rounded-xl border-transparent !px-3 !py-2 text-white hover:bg-slate-900 dark:hover:bg-neutral-800"
+								onClick={toggleSidebar}
+							/>
 
-						{isSidebarVisible && (
-							<PublicationSidebar navbarItems={navbarItems} toggleSidebar={toggleSidebar} />
-						)}
+							{isSidebarVisible && (
+								<PublicationSidebar navbarItems={navbarItems} toggleSidebar={toggleSidebar} />
+							)}
+						</div>
+						<div className="hidden lg:block">
+							<PublicationLogo />
+						</div>
 					</div>
-					<div className="hidden lg:block">
-						<PublicationLogo />
+					<div className="flex flex-row items-center gap-5 text-slate-300">
+						<nav className="hidden lg:block">{navList}</nav>
 					</div>
 				</div>
-				<div className="col-span-2 flex flex-row items-center justify-end gap-5 text-slate-300 lg:col-span-3">
-					<nav className="hidden lg:block">{navList}</nav>
-				</div>
-			</Container>
+			</div>
 			<div className="mt-3 flex justify-center lg:hidden">
 				<PublicationLogo />
 			</div>
