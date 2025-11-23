@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Container } from '../components/container';
+import { CoverImage } from '../components/cover-image';
+import { resizeImage } from '@starter-kit/utils/image';
 import { AppProvider } from '../components/contexts/appContext';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
@@ -168,6 +170,14 @@ export default function PostOrPage(props: Props) {
 		<AppProvider publication={publication} post={maybePost} page={maybePage}>
 			<Layout>
 				<Header />
+				{maybePost && maybePost.coverImage && (
+					<CoverImage
+						title={maybePost.title}
+						src={resizeImage(maybePost.coverImage?.url || maybePost.coverImage || '', { w: 2000, h: 600, c: 'thumb' })}
+						banner
+						priority
+					/>
+				)}
 				<Container className="pt-10">
 					<article className="flex flex-col items-start gap-10 pb-10">
 						{props.type === 'post' && <Post {...props} />}
