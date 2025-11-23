@@ -6,6 +6,7 @@ import { useAppContext } from './contexts/appContext';
 import HamburgerSVG from './icons/svgs/HamburgerSVG';
 import { PublicationLogo } from './publication-logo';
 import PublicationSidebar from './sidebar';
+import { SocialLinks } from './social-links';
 
 function hasUrl(
 	navbarItem: PublicationNavbarItem,
@@ -93,8 +94,12 @@ export const Header = () => {
 								<PublicationSidebar navbarItems={navbarItems} toggleSidebar={toggleSidebar} />
 							)}
 						</div>
-						<div className="hidden lg:block">
+						<div className="hidden lg:flex items-center gap-4">
 							<PublicationLogo />
+							{/* show social icons in header on large screens */}
+							<div className="hidden lg:block">
+								<SocialLinks variant="header" />
+							</div>
 						</div>
 					</div>
 					<div className="flex flex-row items-center gap-5 text-slate-300">
