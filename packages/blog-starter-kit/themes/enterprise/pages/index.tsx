@@ -155,10 +155,11 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 						loop
 						muted
 						playsInline
+						preload="auto"
 						className="absolute inset-0 h-full w-full object-cover"
 						style={{ zIndex: 0 }}
 					>
-						<source src="/assets/videos/CC1_Iron Man.mp4" type="video/mp4" />
+						<source src="/assets/videos/CC1_Iron-Man.mp4" type="video/mp4" />
 					</video>
 
 					{/* Dark overlay for text readability */}
