@@ -114,6 +114,16 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 							publication.descriptionSEO || publication.about?.text || 'Innovation • Research • Insights'
 						}
 					/>
+					{/* Open Graph tags for social previews */}
+					<meta
+						property="og:description"
+						content={
+							publication.descriptionSEO || publication.about?.text || 'Innovation • Research • Insights'
+						}
+					/>
+					<meta property="og:title" content={publication.displayTitle || publication.title || 'RYEO LABS'} />
+					<meta property="og:type" content="website" />
+					<meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL || '/'} />
 					<meta property="twitter:card" content="summary_large_image" />
 					<meta
 						property="twitter:title"
@@ -262,7 +272,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
 												style={{ fontFamily: "'Montserrat', sans-serif" }}
 											>
-												RYEO LABS is is the personal‑professional hub founded by Anne Reyes, a BS Data Science undergrad at Mapua University; built as an evolving archive of ideas, systems, and stories. It is the beginning to a future of an invention-innovation lab, research collective, and creative studio.
+												RYEO LABS is the personal‑professional hub founded by Anne Reyes, a BS Data Science undergrad at Mapua University; built as an evolving archive of ideas, systems, and stories. It is the beginning to a future of an invention-innovation lab, research collective, and creative studio.
 											</p>
 										)}
 
@@ -271,7 +281,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
 												style={{ fontFamily: "'Montserrat', sans-serif" }}
 											>
-												People in RYEO Labs live and thrive in curiosity, and invention. We explore the intersection of technology, design, and human experience to build meaningful solutions to change the world for the better.
+												People in RYEO LABS live and thrive in curiosity, and invention. We explore the intersection of technology, design, and human experience to build meaningful solutions to change the world for the better.
 											</p>
 										)}
 									</div>

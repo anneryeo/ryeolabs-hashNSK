@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useAppContext } from './contexts/appContext';
-import { GithubSVG, HashnodeSVG, LinkedinSVG, RssSVG, XSVG } from './icons';
+import { GithubSVG, HashnodeSVG, LinkedinSVG, RssSVG, XSVG, InstagramSVG, FacebookSVG, YoutubeSVG, WebsiteSVG } from './icons';
 
 type SocialLinksProps = {
 	isSidebar?: boolean;
@@ -30,6 +30,53 @@ export const SocialLinks = ({ isSidebar, variant = 'default' }: SocialLinksProps
 			<div className={baseContainer}>
 				{hasSocialLinks && (
 					<>
+						{(publication.links as any)?.instagram && (
+							<a
+								href={(publication.links as any).instagram}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Find us on Instagram, external website, opens in new tab"
+								className={btnClass}
+							>
+								<InstagramSVG className="h-5 w-5 stroke-current" />
+							</a>
+						)}
+
+						{(publication.links as any)?.facebook && (
+							<a
+								href={(publication.links as any).facebook}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Find us on Facebook, external website, opens in new tab"
+								className={btnClass}
+							>
+								<FacebookSVG className="h-5 w-5 stroke-current" />
+							</a>
+						)}
+
+						{(publication.links as any)?.youtube && (
+							<a
+								href={(publication.links as any).youtube}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Find us on YouTube, external website, opens in new tab"
+								className={btnClass}
+							>
+								<YoutubeSVG className="h-5 w-5 stroke-current" />
+							</a>
+						)}
+
+						{(publication.links as any)?.website && (
+							<a
+								href={(publication.links as any).website}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Visit our website, external website, opens in new tab"
+								className={btnClass}
+							>
+								<WebsiteSVG className="h-5 w-5 stroke-current" />
+							</a>
+						)}
 						{publication.links?.twitter && (
 							<a
 								href={publication.links.twitter}
