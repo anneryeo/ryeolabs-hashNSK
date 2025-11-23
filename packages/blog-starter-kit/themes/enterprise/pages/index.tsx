@@ -142,24 +142,44 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 				</Head>
 				<Header />
 
-				{/* Hero Section - Full screen red background */}
+				{/* Hero Section - Full screen with video background */}
 				<section
-					className="relative flex min-h-screen items-center justify-center"
+					className="relative flex min-h-screen items-center justify-center overflow-hidden"
 					style={{
 						backgroundColor: '#C20005'
 					}}
 				>
+					{/* Video Background */}
+					<video
+						autoPlay
+						loop
+						muted
+						playsInline
+						className="absolute inset-0 h-full w-full object-cover"
+						style={{ zIndex: 0 }}
+					>
+						<source src="/assets/videos/CC1_Iron Man.mp4" type="video/mp4" />
+					</video>
+
+					{/* Dark overlay for text readability */}
+					<div
+						className="absolute inset-0 bg-black/40"
+						style={{ zIndex: 1 }}
+					/>
+
 					{/* Animated gradient overlay */}
 					<div
 						className="absolute inset-0 opacity-10"
 						style={{
-							background: 'radial-gradient(circle at 50% 50%, rgba(255, 253, 243, 0.3) 0%, transparent 50%)'
+							background: 'radial-gradient(circle at 50% 50%, rgba(255, 253, 243, 0.3) 0%, transparent 50%)',
+							zIndex: 2
 						}}
 					/>
 					<div
 						className={`relative z-10 px-6 text-center transition-all duration-1000 ${
 							isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
 						}`}
+						style={{ zIndex: 3 }}
 					>
 						{/* Logo/Title */}
 						<div className="mb-12 flex justify-center">
@@ -180,7 +200,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 						<p
 							className="mb-16 text-xl text-[#FFFDF3] md:text-2xl"
 							style={{
-								fontFamily: "'Alexandria', sans-serif",
+								fontFamily: "'Montserrat', sans-serif",
 								lineHeight: '0.885'
 							}}
 						>
@@ -192,7 +212,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 							<button
 								onClick={scrollToBlog}
 								className="group relative overflow-hidden rounded-full border-2 border-[#FFFDF3] bg-transparent px-10 py-4 font-semibold text-[#FFFDF3] transition-all duration-300 hover:bg-[#FFFDF3] hover:text-[#C20005]"
-								style={{ fontFamily: "'Alexandria', sans-serif" }}
+								style={{ fontFamily: "'Montserrat', sans-serif" }}
 							>
 								<span className="relative z-10">Explore</span>
 							</button>
@@ -203,6 +223,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 					<div
 						className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
 						onClick={scrollToBlog}
+						style={{ zIndex: 3 }}
 					>
 						<ChevronDownSVG className="h-8 w-8 text-[#FFFDF3]" />
 					</div>
@@ -236,7 +257,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 										{publication.about?.text && (
 											<p
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
-												style={{ fontFamily: "'Alexandria', sans-serif" }}
+												style={{ fontFamily: "'Montserrat', sans-serif" }}
 											>
 												{publication.about.text}
 											</p>
@@ -245,7 +266,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 										{publication.about?.html && (
 											<div
 												className="text-lg text-gray-600 leading-relaxed md:text-xl prose prose-lg max-w-none"
-												style={{ fontFamily: "'Alexandria', sans-serif" }}
+												style={{ fontFamily: "'Montserrat', sans-serif" }}
 												dangerouslySetInnerHTML={{ __html: publication.about.html }}
 											/>
 										)}
@@ -253,7 +274,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 										{!publication.about?.text && !publication.about?.html && (
 											<p
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
-												style={{ fontFamily: "'Alexandria', sans-serif" }}
+												style={{ fontFamily: "'Montserrat', sans-serif" }}
 											>
 												RYEO LABS is a creative space where innovation meets curiosity. We explore the intersection of technology, design, and human experience to build meaningful solutions.
 											</p>
@@ -315,7 +336,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 							<p
 								className="text-lg text-gray-700 md:text-xl"
 								style={{
-									fontFamily: "'Alexandria', sans-serif",
+									fontFamily: "'Montserrat', sans-serif",
 									lineHeight: '0.885'
 								}}
 							>
