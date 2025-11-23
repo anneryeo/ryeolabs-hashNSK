@@ -6,12 +6,24 @@ type Props = {
 	src: string;
 	slug?: string;
 	priority?: boolean;
+	banner?: boolean;
 };
 
-export const CoverImage = ({ title, src, slug, priority = false }: Props) => {
+export const CoverImage = ({ title, src, slug, priority = false, banner = false }: Props) => {
 	const postURL = `/${slug}`;
 
-	const image = (
+	const image = banner ? (
+		<div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-[40vh]">
+			<Image
+				src={src}
+				alt={`Cover Image for ${title}`}
+				className="w-full object-cover"
+				fill
+				unoptimized
+				priority={priority}
+			/>
+		</div>
+	) : (
 		<div className="relative pt-[52.5%]">
 			<Image
 				src={src}
@@ -23,6 +35,7 @@ export const CoverImage = ({ title, src, slug, priority = false }: Props) => {
 			/>
 		</div>
 	);
+
 	return (
 		<div className="sm:mx-0">
 			{slug ? (

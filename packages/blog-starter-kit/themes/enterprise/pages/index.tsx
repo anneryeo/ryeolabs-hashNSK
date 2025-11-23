@@ -4,7 +4,9 @@ import request from 'graphql-request';
 import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { Waypoint } from 'react-waypoint';
 import { Button } from '../components/button';
 import { Container } from '../components/container';
@@ -46,6 +48,19 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 	const [allPosts, setAllPosts] = useState<PostFragment[]>(initialAllPosts);
 	const [pageInfo, setPageInfo] = useState<Props['initialPageInfo']>(initialPageInfo);
 	const [loadedMore, setLoadedMore] = useState(false);
+	const [scrollY, setScrollY] = useState(0);
+	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		setIsVisible(true);
+
+		const handleScroll = () => {
+			setScrollY(window.scrollY);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
 
 	const loadMore = async () => {
 		const data = await request<MorePostsByPublicationQuery, MorePostsByPublicationQueryVariables>(
@@ -64,6 +79,11 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 		setAllPosts([...allPosts, ...newPosts]);
 		setPageInfo(data.publication.posts.pageInfo);
 		setLoadedMore(true);
+	};
+
+	const scrollToBlog = () => {
+		const blogSection = document.getElementById('blog-posts');
+		blogSection?.scrollIntoView({ behavior: 'smooth' });
 	};
 
 	const firstPost = allPosts[0];
@@ -86,23 +106,23 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 			<Layout>
 				<Head>
 					<title>
-						{publication.displayTitle || publication.title || 'Hashnode Blog Starter Kit'}
+						{publication.displayTitle || publication.title || 'RYEO LABS'}
 					</title>
 					<meta
 						name="description"
 						content={
-							publication.descriptionSEO || publication.title || `${publication.author.name}'s Blog`
+							publication.descriptionSEO || publication.about?.text || 'Innovation • Research • Insights'
 						}
 					/>
 					<meta property="twitter:card" content="summary_large_image" />
 					<meta
 						property="twitter:title"
-						content={publication.displayTitle || publication.title || 'Hashnode Blog Starter Kit'}
+						content={publication.displayTitle || publication.title || 'RYEO LABS'}
 					/>
 					<meta
 						property="twitter:description"
 						content={
-							publication.descriptionSEO || publication.title || `${publication.author.name}'s Blog`
+							publication.descriptionSEO || publication.about?.text || 'Innovation • Research • Insights'
 						}
 					/>
 					<meta
@@ -121,67 +141,324 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 					/>
 				</Head>
 				<Header />
-				<Container className="flex flex-col items-stretch gap-10 px-5 pb-10">
-					<Navbar />
 
-					{allPosts.length === 0 && (
-						<div className="grid grid-cols-1 py-20 lg:grid-cols-3">
-							<div className="col-span-1 flex flex-col items-center gap-5 text-center text-slate-700 dark:text-neutral-400 lg:col-start-2">
-								<div className="w-20">
-									<ArticleSVG clasName="stroke-current" />
-								</div>
-								<p className="text-xl font-semibold ">
-									Hang tight! We&apos;re drafting the first article.
-								</p>
+				{/* Hero Section - Full screen with video background */}
+				<section
+					className="relative flex min-h-screen items-center justify-center overflow-hidden"
+					style={{
+						backgroundColor: '#C20005'
+					}}
+				>
+					{/* Video Background */}
+					<video
+						autoPlay
+						loop
+						muted
+						playsInline
+						preload="auto"
+						className="absolute inset-0 h-full w-full object-cover"
+						style={{ zIndex: 0 }}
+					>
+						<source src="/assets/videos/CC1_Iron-Man_3.mp4" type="video/mp4" />
+					</video>
+
+					{/* Dark overlay for text readability */}
+					<div
+						className="absolute inset-0 bg-black/40"
+						style={{ zIndex: 1 }}
+					/>
+
+					{/* Animated gradient overlay */}
+					<div
+						className="absolute inset-0 opacity-10"
+						style={{
+							background: 'radial-gradient(circle at 50% 50%, rgba(255, 253, 243, 0.3) 0%, transparent 50%)',
+							zIndex: 2
+						}}
+					/>
+					<div
+						className={`relative z-10 px-6 text-center transition-all duration-1000 ${
+							isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+						}`}
+						style={{ zIndex: 3 }}
+					>
+						{/* Logo/Title */}
+						<div className="mb-12 flex justify-center">
+							<div className="text-[#FFFDF3]">
+								<h1
+									className="text-6xl font-bold md:text-8xl uppercase"
+									style={{
+										fontFamily: "'Swis721 Ex BT', sans-serif",
+										lineHeight: '0.885',
+										letterSpacing: '-0.06em'
+									}}
+								>
+									{(publication.displayTitle || publication.title || 'RYEO LABS').toUpperCase()}
+								</h1>
 							</div>
 						</div>
-					)}
 
-					<div className="grid items-start gap-6 xl:grid-cols-2">
-						<div className="col-span-1">
-							{firstPost && (
-								<HeroPost
-									title={firstPost.title}
-									coverImage={firstPost.coverImage?.url || DEFAULT_COVER}
-									date={firstPost.publishedAt}
-									slug={firstPost.slug}
-									excerpt={firstPost.brief}
-								/>
-							)}
+						{/* Tagline */}
+						<p
+							className="mb-16 text-xl text-[#FFFDF3] md:text-2xl"
+							style={{
+								fontFamily: "'Montserrat', sans-serif",
+								lineHeight: '0.885'
+							}}
+						>
+							From Vision to Evolution.
+						</p>
+
+						{/* CTA Buttons */}
+						<div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
+							<button
+								onClick={scrollToBlog}
+								className="group relative overflow-hidden rounded-full border-2 border-[#FFFDF3] bg-transparent px-10 py-4 font-semibold text-[#FFFDF3] transition-all duration-300 hover:bg-[#C20005] hover:text-[#FFFDF3]"
+								style={{ fontFamily: "'Montserrat', sans-serif" }}
+							>
+								<span className="relative z-10">Explore</span>
+							</button>
 						</div>
-						<div className="col-span-1 flex flex-col gap-6">{secondaryPosts}</div>
 					</div>
 
-					{allPosts.length > 0 && (
-						<div className="bg-primary-50 grid grid-cols-4 rounded-lg px-5 py-5 dark:bg-neutral-900 md:py-10">
-							<div className="col-span-full md:col-span-2 md:col-start-2">
-								<h2 className="text-primary-600 dark:text-primary-500 mb-5 text-center text-lg font-semibold">
-									Subscribe to our newsletter for updates and changelog.
-								</h2>
-								<SubscribeForm />
-							</div>
-						</div>
-					)}
+					{/* Scroll indicator */}
+					<div
+						className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
+						onClick={scrollToBlog}
+						style={{ zIndex: 3 }}
+					>
+						<ChevronDownSVG className="h-8 w-8 text-[#FFFDF3]" />
+					</div>
+				</section>
 
-					{morePosts.length > 0 && (
-						<>
-							<MorePosts context="home" posts={morePosts} />
-							{!loadedMore && pageInfo.hasNextPage && pageInfo.endCursor && (
-								<div className="flex w-full flex-row items-center justify-center">
-									<Button
-										onClick={loadMore}
-										type="outline"
-										icon={<ChevronDownSVG className="h-5 w-5 stroke-current" />}
-										label="Load more posts"
+				{/* About / What is RYEO LABS Section */}
+				<section
+					id="about"
+					className="min-h-screen py-20 flex items-center"
+					style={{ backgroundColor: '#FFFDF3' }}
+				>
+					<div className="container mx-auto px-6">
+						<div className="max-w-7xl mx-auto">
+							{/* Two Column Layout: Text on Left, Image on Right */}
+							<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+								{/* Left Column - Text Content */}
+								<div>
+									<h2
+										className="mb-7 text-7xl font-bold md:text-8xl"
+										style={{
+											color: '#C20005',
+											fontFamily: "'Swis721 Ex BT', sans-serif",
+											lineHeight: '0.885',
+											letterSpacing: '-0.06em',
+										}}
+									>
+										What is RYEO LABS?
+									</h2>
+
+									<div className="space-y-6">
+										{publication.about?.text && (
+											<p
+												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
+												style={{ fontFamily: "'Montserrat', sans-serif" }}
+											>
+												RYEO LABS is is the personal‑professional hub founded by Anne Reyes, a BS Data Science undergrad at Mapua University; built as an evolving archive of ideas, systems, and stories. It is the beginning to a future of an invention-innovation lab, research collective, and creative studio.
+											</p>
+										)}
+
+										{!publication.about?.text && !publication.about?.html && (
+											<p
+												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
+												style={{ fontFamily: "'Montserrat', sans-serif" }}
+											>
+												People in RYEO Labs live and thrive in curiosity, and invention. We explore the intersection of technology, design, and human experience to build meaningful solutions to change the world for the better.
+											</p>
+										)}
+									</div>
+								</div>
+
+								{/* Right Column - Image */}
+								<div className="relative">
+									{/* Publication logo or placeholder - responsive, no clipping */}
+									<div className="shadow-2xl relative w-full">
+										{publication.preferences.logo ? (
+											<Image
+												src="/assets/images/20250904_071107331_iOS.jpg"
+												alt="Anne Reyes"
+												width={900}
+												height={1200}
+												className="w-full h-auto object-contain"
+												style={{ background: 'transparent' }}
+											/>
+										) : (
+											<div className="w-full h-full flex items-center justify-center text-[#FFFDF3] text-4xl font-bold" style={{ fontFamily: "'Alexandria', sans-serif" }}>
+												{publication.displayTitle || publication.title || 'RYEO'}
+											</div>
+										)}
+									</div>
+
+									{/* Decorative element */}
+									<div
+										className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full opacity-20 -z-10"
+										style={{ backgroundColor: '#C20005' }}
 									/>
 								</div>
-							)}
-							{loadedMore && pageInfo.hasNextPage && pageInfo.endCursor && (
-								<Waypoint onEnter={loadMore} bottomOffset={'10%'} />
-							)}
-						</>
-					)}
-				</Container>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+				{/* Inspiration Board Section */}
+				<section id="inspiration" className="py-20" style={{ backgroundColor: '#C20005' }}>
+					<div className="container mx-auto px-6">
+						<div className="max-w-7xl mx-auto text-white">
+							<div className="text-center mb-8">
+							<h2
+								className="mb-4 text-4xl font-bold md:text-8xl"
+								style={{
+									color: '#FFFDF3',
+									fontFamily: "'Swis721 Ex BT', sans-serif",
+									lineHeight: '1',
+									letterSpacing: '-0.07em'
+								}}
+							>
+								We all need a little bit of inspiration.
+							</h2>
+								<p className="text-lg max-w-2xl mx-auto">Be reminded.</p>
+							</div>
+							<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+								{[
+									{
+										src: '/assets/images/101ca57a3b78fe1b6473111cface42f6.jpg',
+										quote: 'If you are tired, then do it tired.',
+										author: '000',
+									},
+									{
+										src: '/assets/images/287ee78811e9fc82ef5145e7302ad1e5.jpg',
+										quote: 'Never forget the promise you made to yourself that night.',
+										author: '000',
+									},
+									{
+										src: '/assets/images/586c1570ab7e8cb3cc6c081528433d15.jpg',
+										quote: 'The body achieves what the mind believes.',
+										author: '000',
+									},
+								].map((item, idx) => (
+									<figure key={idx} className="bg-white/5 rounded-lg overflow-hidden">
+										<div className="relative w-full" style={{ paddingTop: '126.67%' }}>
+											<Image src={item.src} alt={item.author || 'inspiration'} fill className="object-cover" />
+										</div>
+										<figcaption className="p-4 text-white">
+											<p className="text-base italic">“{item.quote}”</p>
+											<p className="mt-2 text-sm opacity-80">— {item.author}</p>
+										</figcaption>
+									</figure>
+								))}
+							</div>
+						</div>
+					</div>
+				</section>
+
+				{/* Blog Posts Section */}
+				<section
+					id="blog-posts"
+					className="min-h-screen py-20"
+					style={{ backgroundColor: '#FFFDF3' }}
+				>
+					<div className="w-full flex flex-col items-stretch gap-10 px-4 md:px-6 lg:px-8 xl:px-12 pb-10">
+						<div className="mb-12 text-center">
+							<h2
+								className="mb-4 text-4xl font-bold md:text-8xl"
+								style={{
+									color: '#C20005',
+									fontFamily: "'Swis721 Ex BT', sans-serif",
+									lineHeight: '0.885',
+									letterSpacing: '-0.06em'
+								}}
+							>
+								Explore
+							</h2>
+							<p
+								className="text-lg text-gray-700 md:text-xl"
+								style={{
+									fontFamily: "'Montserrat', sans-serif",
+									lineHeight: '0.885'
+								}}
+							>
+								Discover our latest projects, insights, and stories.
+							</p>
+						</div>
+
+						{allPosts.length === 0 && (
+							<div className="grid grid-cols-1 py-20 lg:grid-cols-3">
+								<div className="col-span-1 flex flex-col items-center gap-5 text-center text-slate-700 dark:text-neutral-400 lg:col-start-2">
+									<div className="w-20">
+										<ArticleSVG clasName="stroke-current" />
+									</div>
+									<p className="text-xl font-semibold">
+										Hang tight! We&apos;re drafting the first article.
+									</p>
+								</div>
+							</div>
+						)}
+
+						{allPosts.length > 0 && (
+							<>
+								<div className="grid items-start gap-6 xl:grid-cols-2">
+									<div className="col-span-1">
+										{firstPost && (
+											<HeroPost
+												title={firstPost.title}
+												coverImage={firstPost.coverImage?.url || DEFAULT_COVER}
+												date={firstPost.publishedAt}
+												slug={firstPost.slug}
+												excerpt={firstPost.brief}
+											/>
+										)}
+									</div>
+									<div className="col-span-1 flex flex-col gap-6">{secondaryPosts}</div>
+								</div>
+
+								{morePosts.length > 0 && (
+									<>
+										<MorePosts context="home" posts={morePosts} />
+										{!loadedMore && pageInfo.hasNextPage && pageInfo.endCursor && (
+											<div className="flex w-full flex-row items-center justify-center">
+												<Button
+													onClick={loadMore}
+													type="outline"
+													icon={<ChevronDownSVG className="h-5 w-5 stroke-current" />}
+													label="Load more posts"
+												/>
+											</div>
+										)}
+										{loadedMore && pageInfo.hasNextPage && pageInfo.endCursor && (
+											<Waypoint onEnter={loadMore} bottomOffset={'10%'} />
+										)}
+									</>
+								)}
+							</>
+						)}
+					</div>
+				</section>
+
+				{/* Newsletter Subscription */}
+				{allPosts.length > 0 && (
+					<section className="py-5" style={{ backgroundColor: '#FFFDF3' }}>
+						<Container className="px-5">
+							<div className="bg-primary-50 grid grid-cols-4 rounded-lg px-5 py-5 dark:bg-neutral-900 md:py-10">
+								<div className="col-span-full md:col-span-2 md:col-start-2">
+									<h2 className="text-primary-600 dark:text-primary-500 mb-5 text-center text-lg font-semibold">
+										Subscribe to our newsletter for updates on the future!
+									</h2>
+									<SubscribeForm />
+								</div>
+							</div>
+						</Container>
+					</section>
+				)}
+
 				<Footer />
 			</Layout>
 		</AppProvider>

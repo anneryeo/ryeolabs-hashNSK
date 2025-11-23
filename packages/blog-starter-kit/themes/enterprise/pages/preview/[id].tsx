@@ -11,11 +11,14 @@ import { MarkdownToHtml } from '../../components/markdown-to-html';
 import { PostHeader } from '../../components/post-header';
 import {
 	DraftByIdDocument,
+	PublicationByHostDocument,
+} from '../../generated/graphql';
+
+import type {
 	DraftByIdQuery,
 	DraftByIdQueryVariables,
 	Post,
 	Publication,
-	PublicationByHostDocument,
 	PublicationByHostQuery,
 	PublicationByHostQueryVariables,
 } from '../../generated/graphql';

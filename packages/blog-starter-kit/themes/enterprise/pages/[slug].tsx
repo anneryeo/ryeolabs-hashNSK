@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Container } from '../components/container';
+import { CoverImage } from '../components/cover-image';
+import { resizeImage } from '@starter-kit/utils/image';
 import { AppProvider } from '../components/contexts/appContext';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
@@ -88,7 +90,7 @@ const Post = ({ publication, post }: PostProps) => {
 			triggerCustomWidgetEmbed(post.publication?.id.toString());
 			setCanLoadEmbeds(true);
 		})();
-	}, []);
+	}, [post]);
 
 	return (
 		<>
@@ -164,10 +166,25 @@ export default function PostOrPage(props: Props) {
 	const maybePage = props.type === 'page' ? props.page : null;
 	const publication = props.publication;
 
+	// Normalize cover image to a string URL regardless of GraphQL shape (string | { url: string })
+	const coverSrc = (() => {
+		if (!maybePost?.coverImage) return '';
+		if (typeof maybePost.coverImage === 'string') return maybePost.coverImage;
+		return (maybePost.coverImage as { url?: string })?.url || '';
+	})();
+
 	return (
 		<AppProvider publication={publication} post={maybePost} page={maybePage}>
 			<Layout>
 				<Header />
+				{maybePost && coverSrc && (
+					<CoverImage
+						title={maybePost.title}
+						src={resizeImage(coverSrc, { w: 2000, h: 600, c: 'thumb' })}
+						banner
+						priority
+					/>
+				)}
 				<Container className="pt-10">
 					<article className="flex flex-col items-start gap-10 pb-10">
 						{props.type === 'post' && <Post {...props} />}

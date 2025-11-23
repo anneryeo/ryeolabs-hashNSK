@@ -1,22 +1,56 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Container } from './container';
 import { useAppContext } from './contexts/appContext';
 import { SocialLinks } from './social-links';
+import { useEffect, useState } from 'react';
 
 export const Footer = () => {
 	const { publication } = useAppContext();
-	const PUBLICATION_LOGO = publication.preferences.logo;
+	const [clientPublication, setClientPublication] = useState<typeof publication | null>(null);
+	const effectivePublication = clientPublication ?? publication;
+	const PUBLICATION_LOGO = effectivePublication.preferences.logo;
+
+	useEffect(() => {
+		const endpoint = process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT;
+		const host = process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST;
+		if (!endpoint || !host) return;
+
+		let mounted = true;
+		const query = `query PublicationByHost($host: String!) { publication(host: $host) { title preferences { navbarItems { label url } logo links { twitter github linkedin hashnode } } } }`;
+
+		fetch(endpoint, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ query, variables: { host } }),
+		})
+			.then((res) => res.json())
+			.then((json) => {
+				if (!mounted) return;
+				const pub = json?.data?.publication;
+				if (pub) {
+					setClientPublication({ ...publication, ...pub });
+				}
+			})
+			.catch(() => {
+				/* ignore */
+			});
+
+		return () => {
+			mounted = false;
+		};
+	}, [publication]);
 	return (
-		<footer className="border-t py-20 dark:border-neutral-800 ">
+		<footer className="border-t py-10 dark:border-neutral-800 ">
 			<Container className="px-5">
 				{PUBLICATION_LOGO ? (
-					<div className="mb-20 flex w-full flex-row justify-center">
+					<div className="mb-2 flex w-full flex-row justify-center">
 						<Link
 							href={'/'}
 							aria-label={`${publication.title} home page`}
 							className="flex flex-row items-center gap-5"
 						>
-							<img className="block w-40" src={PUBLICATION_LOGO} alt={publication.title} />
+							<Image className="block" src={PUBLICATION_LOGO} alt={publication.title} width={160} height={40} />
 						</Link>
 					</div>
 				) : (
@@ -29,7 +63,7 @@ export const Footer = () => {
 						<SocialLinks />
 						<p>&copy; 2025 Ryeo Labs </p>
 						<p className="max-w-xl text-center text-sm text-slate-500 dark:text-neutral-400">
-							About Ryeo Labs: Ryeo, by itself, is a symbol of progress and innovation. It was nothing, and now it can be anything. And now, it’s a space for new things, for ideas to come alive.
+							Ryeo Labs draws inspiration from the word Ryeo, which originally came from &apos;Rey&apos; (Reyes) whose meaning shifts across cultures: in Korean (려 / 려) it evokes Beauty, in Chinese (麗 / 璀燦) it signifies Splendour, and in Pakistani (ریو / اژدھا) tradition it carries the spirit of the Dragon. Together, these roots embody elegance, brilliance, and power—values at the heart of our innovation.
 						</p>
 					</div>
 				</div>

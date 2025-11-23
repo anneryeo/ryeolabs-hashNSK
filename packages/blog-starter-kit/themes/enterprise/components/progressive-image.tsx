@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { resizeImage } from '@starter-kit/utils/image';
 
@@ -49,7 +50,9 @@ class ProgressiveImage extends React.Component<{
         loading="lazy"
         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
         // eslint-disable-next-line no-return-assign
-        ref={(c) => (this.image = c || null)}
+        ref={(c) => {
+          this.image = c || null;
+        }}
         data-src={resizedImage}
         width={resize.w}
         height={resize.h}
