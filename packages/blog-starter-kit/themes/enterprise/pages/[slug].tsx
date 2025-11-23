@@ -166,14 +166,21 @@ export default function PostOrPage(props: Props) {
 	const maybePage = props.type === 'page' ? props.page : null;
 	const publication = props.publication;
 
+	// Normalize cover image to a string URL regardless of GraphQL shape (string | { url: string })
+	const coverSrc = (() => {
+		if (!maybePost?.coverImage) return '';
+		if (typeof maybePost.coverImage === 'string') return maybePost.coverImage;
+		return (maybePost.coverImage as { url?: string })?.url || '';
+	})();
+
 	return (
 		<AppProvider publication={publication} post={maybePost} page={maybePage}>
 			<Layout>
 				<Header />
-				{maybePost && maybePost.coverImage && (
+				{maybePost && coverSrc && (
 					<CoverImage
 						title={maybePost.title}
-						src={resizeImage(maybePost.coverImage?.url || maybePost.coverImage || '', { w: 2000, h: 600, c: 'thumb' })}
+						src={resizeImage(coverSrc, { w: 2000, h: 600, c: 'thumb' })}
 						banner
 						priority
 					/>
