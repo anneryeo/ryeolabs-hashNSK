@@ -90,7 +90,7 @@ const Post = ({ publication, post }: PostProps) => {
 			triggerCustomWidgetEmbed(post.publication?.id.toString());
 			setCanLoadEmbeds(true);
 		})();
-	}, []);
+	}, [post]);
 
 	return (
 		<>

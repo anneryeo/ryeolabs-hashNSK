@@ -112,7 +112,7 @@ export const Header = () => {
 	);
 
 	return (
-		<header className="border-b bg-[#C20005] py-1 dark:border-neutral-800 dark:bg-neutral-900">
+		<header className="border-b bg-[#C20005] py-2 dark:border-neutral-800 dark:bg-neutral-900">
 			<div className="w-full px-5">
 				<div className="flex w-full flex-row items-center justify-between gap-5">
 					<div className="flex flex-row items-center gap-2">

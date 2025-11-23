@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ImgHTMLAttributes } from 'react';
 
 import Image, { ImageProps } from 'next/legacy/image';

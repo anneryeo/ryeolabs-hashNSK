@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { resizeImage } from '@starter-kit/utils/image';
 import { DEFAULT_AVATAR } from '../utils/const';
 
@@ -13,18 +14,21 @@ export const Avatar = ({ username, name, picture, size }: Props) => {
 		<div className="flex items-center gap-2">
 			<a
 				href={`https://hashnode.com/@${username}`}
+				aria-label={`${name} profile on Hashnode`}
 				className={
 					size
-						? `w-${size} h-${size} block overflow-hidden rounded-full`
-						: 'block h-8 w-8 overflow-hidden rounded-full'
+						? `block overflow-hidden rounded-full`
+						: 'block overflow-hidden rounded-full'
 				}
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				<img
-					className="block h-full w-full"
+				<Image
+					className="block h-full w-full object-cover"
 					src={resizeImage(picture, { w: 160, h: 160, c: 'face' }, DEFAULT_AVATAR)}
 					alt={name}
+					width={size || 40}
+					height={size || 40}
 				/>
 			</a>
 			<div className="text-base font-bold text-slate-600 dark:text-neutral-300">
