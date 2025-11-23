@@ -2,10 +2,43 @@ import Link from 'next/link';
 import { Container } from './container';
 import { useAppContext } from './contexts/appContext';
 import { SocialLinks } from './social-links';
+import { useEffect, useState } from 'react';
 
 export const Footer = () => {
 	const { publication } = useAppContext();
-	const PUBLICATION_LOGO = publication.preferences.logo;
+	const [clientPublication, setClientPublication] = useState<typeof publication | null>(null);
+	const effectivePublication = clientPublication ?? publication;
+	const PUBLICATION_LOGO = effectivePublication.preferences.logo;
+
+	useEffect(() => {
+		const endpoint = process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT;
+		const host = process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST;
+		if (!endpoint || !host) return;
+
+		let mounted = true;
+		const query = `query PublicationByHost($host: String!) { publication(host: $host) { title preferences { navbarItems { label url } logo links { twitter github linkedin hashnode } } } }`;
+
+		fetch(endpoint, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ query, variables: { host } }),
+		})
+			.then((res) => res.json())
+			.then((json) => {
+				if (!mounted) return;
+				const pub = json?.data?.publication;
+				if (pub) {
+					setClientPublication({ ...publication, ...pub });
+				}
+			})
+			.catch(() => {
+				/* ignore */
+			});
+
+		return () => {
+			mounted = false;
+		};
+	}, [publication]);
 	return (
 		<footer className="border-t py-10 dark:border-neutral-800 ">
 			<Container className="px-5">

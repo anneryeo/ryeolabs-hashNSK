@@ -1,5 +1,5 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PublicationNavbarItem } from '../generated/graphql';
 import { Button } from './button';
 import { useAppContext } from './contexts/appContext';
@@ -18,13 +18,48 @@ export const Header = () => {
 	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '/';
 	const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>();
 	const { publication } = useAppContext();
-	const navbarItems = publication.preferences.navbarItems.filter(hasUrl);
+	const [clientPublication, setClientPublication] = useState<typeof publication | null>(null);
+	const effectivePublication = clientPublication ?? publication;
+	const navbarItems = effectivePublication.preferences.navbarItems.filter(hasUrl);
 	const visibleItems = navbarItems.slice(0, 3);
 	const hiddenItems = navbarItems.slice(3);
 
 	const toggleSidebar = () => {
 		setIsSidebarVisible((prevVisibility) => !prevVisibility);
 	};
+
+	useEffect(() => {
+		// fetch latest publication data client-side to ensure header/footer show up-to-date links
+		const endpoint = process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT;
+		const host = process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST;
+		if (!endpoint || !host) return;
+
+		let mounted = true;
+
+		const query = `query PublicationByHost($host: String!) { publication(host: $host) { title preferences { navbarItems { label url } logo links { twitter github linkedin hashnode } } } }`;
+
+		fetch(endpoint, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ query, variables: { host } }),
+		})
+			.then((res) => res.json())
+			.then((json) => {
+				if (!mounted) return;
+				const pub = json?.data?.publication;
+				if (pub) {
+					// merge minimal shape into existing publication to avoid losing fields
+					setClientPublication({ ...publication, ...pub });
+				}
+			})
+			.catch(() => {
+				/* ignore */
+			});
+
+		return () => {
+			mounted = false;
+		};
+	}, [publication]);
 
 	const navList = (
 		<ul className="flex flex-row items-center gap-2 text-white">
