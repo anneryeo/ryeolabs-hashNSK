@@ -286,19 +286,16 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 
 								{/* Right Column - Image */}
 								<div className="relative">
-									{/* Publication logo or placeholder */}
-									<div
-										className="rounded-3xl overflow-hidden shadow-2xl relative"
-										//style={{ minHeight: '600px' }}
-									>
+									{/* Publication logo or placeholder - responsive, no clipping */}
+									<div className="shadow-2xl relative w-full">
 										{publication.preferences.logo ? (
 											<Image
-												src="/assets/images/287ee78811e9fc82ef5145e7302ad1e5.jpg"
+												src="/assets/images/494856406_714513674388206_7931036402097836965_n.jpg"
 												alt="Anne Reyes"
-												width={540}
-												height={684}
-												className="object-contain"
-												style={{ background: 'none' }}
+												width={900}
+												height={1200}
+												className="w-full h-auto object-contain"
+												style={{ background: 'transparent' }}
 											/>
 										) : (
 											<div className="w-full h-full flex items-center justify-center text-[#FFFDF3] text-4xl font-bold" style={{ fontFamily: "'Alexandria', sans-serif" }}>
