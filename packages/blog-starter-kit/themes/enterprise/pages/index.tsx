@@ -213,7 +213,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 						<div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
 							<button
 								onClick={scrollToBlog}
-								className="group relative overflow-hidden rounded-full border-2 border-[#FFFDF3] bg-transparent px-10 py-4 font-semibold text-[#FFFDF3] transition-all duration-300 hover:bg-[#FFFDF3] hover:text-[#C20005]"
+								className="group relative overflow-hidden rounded-full border-2 border-[#FFFDF3] bg-transparent px-10 py-4 font-semibold text-[#FFFDF3] transition-all duration-300 hover:bg-[#C20005] hover:text-[#FFFDF3]"
 								style={{ fontFamily: "'Montserrat', sans-serif" }}
 							>
 								<span className="relative z-10">Explore</span>
@@ -288,15 +288,17 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								<div className="relative">
 									{/* Publication logo or placeholder */}
 									<div
-										className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-[#C20005] to-[#8B0004] shadow-2xl relative"
-										style={{ minHeight: '400px' }}
+										className="rounded-3xl overflow-hidden shadow-2xl relative"
+										//style={{ minHeight: '600px' }}
 									>
 										{publication.preferences.logo ? (
 											<Image
-												src={publication.preferences.logo}
-												alt={publication.title}
-												fill
-												className="object-cover"
+												src="/assets/images/287ee78811e9fc82ef5145e7302ad1e5.jpg"
+												alt="Anne Reyes"
+												width={540}
+												height={684}
+												className="object-contain"
+												style={{ background: 'none' }}
 											/>
 										) : (
 											<div className="w-full h-full flex items-center justify-center text-[#FFFDF3] text-4xl font-bold" style={{ fontFamily: "'Alexandria', sans-serif" }}>
@@ -406,7 +408,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 							<div className="bg-primary-50 grid grid-cols-4 rounded-lg px-5 py-5 dark:bg-neutral-900 md:py-10">
 								<div className="col-span-full md:col-span-2 md:col-start-2">
 									<h2 className="text-primary-600 dark:text-primary-500 mb-5 text-center text-lg font-semibold">
-										Subscribe to our newsletter for updates and changelog.
+										Subscribe to our newsletter for updates on the future!
 									</h2>
 									<SubscribeForm />
 								</div>
