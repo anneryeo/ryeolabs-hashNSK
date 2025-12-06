@@ -198,7 +198,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								<h1
 									className="text-6xl font-bold md:text-8xl uppercase"
 									style={{
-										fontFamily: "'Swis721 Ex BT', sans-serif",
+										fontFamily: "'Zalando Sans Expanded', sans-serif",
 										lineHeight: '0.885',
 										letterSpacing: '-0.06em'
 									}}
@@ -212,7 +212,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 						<p
 							className="mb-16 text-xl text-[#FFFDF3] md:text-2xl"
 							style={{
-								fontFamily: "'Montserrat', sans-serif",
+								fontFamily: "'Zalando Sans Expanded', sans-serif",
 								lineHeight: '0.885'
 							}}
 						>
@@ -224,7 +224,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 							<button
 								onClick={scrollToBlog}
 								className="group relative overflow-hidden rounded-full border-2 border-[#FFFDF3] bg-transparent px-10 py-4 font-semibold text-[#FFFDF3] transition-all duration-300 hover:bg-[#C20005] hover:text-[#FFFDF3]"
-								style={{ fontFamily: "'Montserrat', sans-serif" }}
+								style={{ fontFamily: "'Zalando Sans Expanded', sans-serif" }}
 							>
 								<span className="relative z-10">Explore</span>
 							</button>
@@ -258,12 +258,12 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 										className="mb-7 text-7xl font-bold md:text-8xl"
 										style={{
 											color: '#C20005',
-											fontFamily: "'Swis721 Ex BT', sans-serif",
+											fontFamily: "'Zalando Sans Expanded', sans-serif",
 											lineHeight: '0.885',
 											letterSpacing: '-0.06em',
 										}}
 									>
-										What is RYEO Labs?
+										What is RYEO LABS?
 									</h2>
 
 									<div className="space-y-6">
@@ -328,9 +328,9 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								className="mb-4 text-4xl font-bold md:text-8xl"
 								style={{
 									color: '#FFFDF3',
-									fontFamily: "'Swis721 Ex BT', sans-serif",
+									fontFamily: "'Zalando Sans Expanded', sans-serif",
 									lineHeight: '1',
-									letterSpacing: '-0.07em'
+									letterSpacing: '-0.03em'
 								}}
 							>
 								We all need a little bit of inspiration.
@@ -382,9 +382,9 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 								className="mb-4 text-4xl font-bold md:text-8xl"
 								style={{
 									color: '#C20005',
-									fontFamily: "'Swis721 Ex BT', sans-serif",
+									fontFamily: "'Zalando Sans Expanded', sans-serif",
 									lineHeight: '0.885',
-									letterSpacing: '-0.06em'
+									letterSpacing: '-0.03em'
 								}}
 							>
 								Explore
