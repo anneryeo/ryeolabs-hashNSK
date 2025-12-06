@@ -43,6 +43,7 @@ function PublicationSidebar(props: Props) {
 						!isMounted ? '-translate-x-96' : 'translate-x-0'
 					} fixed bottom-0 left-0 top-0 z-50 flex w-80 transform flex-col bg-white shadow-2xl duration-300 ease-out dark:border-neutral-800 dark:bg-neutral-950`}
 				>
+					<DialogPrimitive.Title className="sr-only">Navigation Menu</DialogPrimitive.Title>
 					<div className="blog-sidebar-header w-full shrink-0 py-6">
 						<div className="flex items-center justify-between pl-8 pr-4">
 							<div className="!text-xl">

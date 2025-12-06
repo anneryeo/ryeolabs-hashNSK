@@ -112,10 +112,10 @@ export const Header = () => {
 	);
 
 	return (
-		<header className="border-b bg-[#C20005] py-2 dark:border-neutral-800 dark:bg-neutral-900">
+		<header className="border-b bg-[#C20005] py-2 lg:py-2 dark:border-neutral-800 dark:bg-neutral-900">
 			<div className="w-full px-5">
-				<div className="flex w-full flex-row items-center justify-between gap-5">
-					<div className="flex flex-row items-center gap-2">
+				<div className="flex w-full flex-row items-center justify-between gap-2 lg:h-auto h-10">
+					<div className="flex flex-row items-center gap-2 lg:gap-4">
 						<div className="lg:hidden">
 							<Button
 								type="outline"
@@ -137,13 +137,13 @@ export const Header = () => {
 							</div>
 						</div>
 					</div>
-					<div className="flex flex-row items-center gap-5 text-slate-300">
+					<div className="hidden lg:flex flex-row items-center gap-5 text-slate-300">
 						<nav className="hidden lg:block">{navList}</nav>
 					</div>
+					<div className="lg:hidden">
+						<PublicationLogo />
+					</div>
 				</div>
-			</div>
-			<div className="mt-3 flex justify-center lg:hidden">
-				<PublicationLogo />
 			</div>
 		</header>
 	);
