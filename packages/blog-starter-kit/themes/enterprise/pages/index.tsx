@@ -373,7 +373,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 				{/* Blog Posts Section */}
 				<section
 					id="blog-posts"
-					className="min-h-screen py-20"
+					className="min-h-screen py-10 md:py-20"
 					style={{ backgroundColor: '#FFFDF3' }}
 				>
 					<div className="w-full flex flex-col items-stretch gap-10 px-4 md:px-6 lg:px-8 xl:px-12 pb-10">
