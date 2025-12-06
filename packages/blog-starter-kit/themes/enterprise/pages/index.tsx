@@ -193,10 +193,10 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 						style={{ zIndex: 3 }}
 					>
 						{/* Logo/Title */}
-						<div className="mb-12 flex justify-center">
+						<div className="mb-6 md:mb-12 flex justify-center">
 							<div className="text-[#FFFDF3]">
 								<h1
-									className="text-6xl font-bold md:text-8xl uppercase"
+									className="text-7xl md:text-8xl font-bold uppercase"
 									style={{
 										fontFamily: "'Zalando Sans Expanded', sans-serif",
 										lineHeight: '0.885',
@@ -210,7 +210,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 
 						{/* Tagline */}
 						<p
-							className="mb-16 text-xl text-[#FFFDF3] md:text-2xl"
+							className="mb-12 md:mb-16 text-xl md:text-2xl text-[#FFFDF3]"
 							style={{
 								fontFamily: "'Zalando Sans Expanded', sans-serif",
 								lineHeight: '0.885'
