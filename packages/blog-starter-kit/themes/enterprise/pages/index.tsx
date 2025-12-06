@@ -223,7 +223,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 						<div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
 							<button
 								onClick={scrollToBlog}
-								className="group relative overflow-hidden rounded-full border-2 border-[#FFFDF3] bg-transparent px-10 py-4 font-semibold text-[#FFFDF3] transition-all duration-300 hover:bg-[#C20005] hover:text-[#FFFDF3]"
+								className="group relative overflow-hidden rounded-full border-2 border-[#FFFDF3] bg-transparent px-10 py-4 font-semibold text-[#FFFDF3] transition-all duration-300 hover:bg-[#FFFDF3] hover:text-[#c40000]"
 								style={{ fontFamily: "'Zalando Sans Expanded', sans-serif" }}
 							>
 								<span className="relative z-10">Explore</span>
@@ -373,13 +373,13 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 				{/* Blog Posts Section */}
 				<section
 					id="blog-posts"
-					className="min-h-screen py-10 md:py-20"
+					className="min-h-screen py-20 md:py-20"
 					style={{ backgroundColor: '#FFFDF3' }}
 				>
 					<div className="w-full flex flex-col items-stretch gap-10 px-4 md:px-6 lg:px-8 xl:px-12 pb-10">
 						<div className="mb-12 text-center">
 							<h2
-								className="mb-4 text-4xl font-bold md:text-8xl"
+								className="mb-3 text-6xl font-bold md:text-8xl"
 								style={{
 									color: '#C20005',
 									fontFamily: "'Zalando Sans Expanded', sans-serif",
@@ -453,10 +453,10 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 					</div>
 				</section>
 
-				{/* Newsletter Subscription */}
-				{allPosts.length > 0 && (
-					<section className="py-5" style={{ backgroundColor: '#FFFDF3' }}>
-						<Container className="px-5">
+			{/* Newsletter Subscription */}
+			{allPosts.length > 0 && (
+				<section className="py-2 md:py-5" style={{ backgroundColor: '#FFFDF3' }}>
+					<Container className="px-20 md:px-20 lg:px-40">
 							<div className="bg-primary-50 grid grid-cols-4 rounded-lg px-5 py-5 dark:bg-neutral-900 md:py-10">
 								<div className="col-span-full md:col-span-2 md:col-start-2">
 									<h2 className="text-primary-600 dark:text-primary-500 mb-5 text-center text-lg font-semibold">
