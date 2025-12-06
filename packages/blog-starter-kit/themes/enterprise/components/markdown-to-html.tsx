@@ -17,7 +17,7 @@ function MarkdownToHtmlComponent({ contentMarkdown }: Props) {
 				dangerouslySetInnerHTML={{ __html: content }}
 			/>
 			<style jsx global>{`
-				.hashnode-content-style p { text-align: justify; }
+				.hashnode-content-style p { text-align: left; }
 				.hashnode-content-style pre,
 				.hashnode-content-style code,
 				.hashnode-content-style blockquote,

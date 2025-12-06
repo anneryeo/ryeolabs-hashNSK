@@ -263,7 +263,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 											letterSpacing: '-0.06em',
 										}}
 									>
-										What is RYEO LABS?
+										What is RYEO Labs?
 									</h2>
 
 									<div className="space-y-6">
@@ -280,7 +280,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 											<p
 												className="text-xl text-gray-700 leading-relaxed md:text-2xl"
 												style={{ fontFamily: "'Montserrat', sans-serif" }}
-											>
+											>4
 												People in RYEO LABS live and thrive in curiosity, and invention. We explore the intersection of technology, design, and human experience to build meaningful solutions to change the world for the better.
 											</p>
 										)}
